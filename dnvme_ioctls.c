@@ -962,6 +962,7 @@ int driver_send_64b(struct metrics_device_list *pmetrics_device,
 
     nvme_gen_cmd = (struct nvme_gen_cmd *)nvme_cmd_ker;
     memset(&prps, 0, sizeof(prps));
+    nvme_gen_cmd->rsvd2 = 0; /* this is the change in the contract */
 
     /* Copy and Increment the CMD ID, copy back to user space so can see ID */
     user_data->unique_id = pmetrics_sq->private_sq.unique_cmd_id++;
